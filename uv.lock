@@ -11,14 +11,16 @@ name = "anomaly-detection"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
+    { name = "matplotlib" },
     { name = "pyod" },
     { name = "scikit-learn" },
 ]
 
 [package.metadata]
 requires-dist = [
+    { name = "matplotlib", specifier = ">=3.9.0" },
     { name = "pyod", specifier = ">=3.6.6" },
-    { name = "scikit-learn", specifier = ">=1.9.1" },
+    { name = "scikit-learn", specifier = ">=1.6.0" },
 ]
 
 [[package]]
