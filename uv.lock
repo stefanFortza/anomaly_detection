@@ -11,6 +11,7 @@ name = "anomaly-detection"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
+    { name = "combo" },
     { name = "matplotlib" },
     { name = "pyod" },
     { name = "scikit-learn" },
@@ -18,6 +19,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
+    { name = "combo", specifier = ">=0.1.3" },
     { name = "matplotlib", specifier = ">=3.9.0" },
     { name = "pyod", specifier = ">=3.6.6" },
     { name = "scikit-learn", specifier = ">=1.6.0" },
@@ -31,6 +33,23 @@ sdist = { url = "https://files.pythonhosted.org/packages/27/fb/576f067976d320f5f
 wheels = [
     { url = "https://files.pythonhosted.org/packages/88/39/799be3f2f0f38cc727ee3b4f1445fe6d5e4133064ec2e4115069418a5bb6/cloudpickle-3.1.2-py3-none-any.whl", hash = "sha256:9acb47f6afd73f60dc1df93bb801b472f05ff42fa6c84167d25cb206be1fbf4a", size = 22228, upload-time = "2025-11-03T09:25:25.534Z" },
 ]
+
+[[package]]
+name = "combo"
+version = "0.1.3"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "joblib" },
+    { name = "matplotlib" },
+    { name = "numba" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
+    { name = "numpy", version = "2.5.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
+    { name = "pyod" },
+    { name = "scikit-learn" },
+    { name = "scipy", version = "1.17.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
+    { name = "scipy", version = "1.18.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/ff/76/1c86426e35a8b1cd5f404db654d2a602bac27263063163ead1230066c1e6/combo-0.1.3.tar.gz", hash = "sha256:6536d6d2f0a7a3a136c2127ba82c4bd640fc245c282c2d0060ad49070e57f42a", size = 38527, upload-time = "2022-04-02T16:20:07.788Z" }
 
 [[package]]
 name = "contourpy"
