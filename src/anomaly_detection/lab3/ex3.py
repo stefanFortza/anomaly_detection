@@ -2,6 +2,7 @@ import warnings
 
 import numpy as np
 import scipy
+import torch
 from pyod.models.dif import DIF
 from pyod.models.loda import LODA
 from pyod.models.lof import LOF
@@ -29,7 +30,7 @@ def fit_and_get_scores(model, X_train, X_test):
     return model.decision_function(X_test)
 
 
-def run():
+def run(n_runs=10):
     data = scipy.io.loadmat("src/anomaly_detection/lab3/shuttle.mat")
     X = data["X"]
     y = data["y"].ravel()
@@ -37,14 +38,21 @@ def run():
     contamination = np.mean(y)
 
     models = [
-        ("DIF", DIF(contamination=contamination, hidden_neurons=[50, 20, 10])),
+        (
+            "DIF",
+            DIF(
+                contamination=contamination,
+                hidden_neurons=[50, 20, 10],
+                device="cuda" if torch.cuda.is_available() else "cpu",
+            ),
+        ),
         ("LOF", LOF(contamination=contamination)),
         ("LODA", LODA(contamination=contamination)),
     ]
 
     for name, model in models:
-        for i in range(1):
-            print(f"Run {i + 1}/10 for model: {name}")
+        for i in range(n_runs):
+            print(f"Run {i + 1}/{n_runs} for model: {name}")
             X_train, X_test, _, y_test = split_and_standardize_data(
                 X, y, random_state=i
             )
