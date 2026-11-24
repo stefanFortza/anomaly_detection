@@ -1,3 +1,4 @@
+# Jk
 # src/anomaly_detection/lab1/ex2.py
 from typing import cast
 
